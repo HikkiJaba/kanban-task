@@ -1,12 +1,10 @@
 import './App.css';
-import Tag from './shared/UIkit/Tag/Tag'
-import Blocked from './shared/UIkit/Status/Blocked/Blocked.tsx';
+import Card from './widgets/Card/Card.tsx';
 
 function App() {
   return (
     <div className="App">
-      <Tag />
-      <Blocked />
+      <Card />
     </div>
   );
 }

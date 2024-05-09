@@ -1,0 +1,24 @@
+.card {
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+	padding: 8px;
+	display: flex;
+	flex-direction: column;
+	width: 192px;
+	height: auto;
+}
+
+.card h3 {
+	margin: 8px 0 8px 0;
+}
+
+.card-status-div {
+	margin: 8px 0 8px 0;
+}
+
+.card-tag-div {
+	display: flex;
+}
+
+.card-tag-div div {
+	margin-right: 4px;
+}

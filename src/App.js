@@ -1,12 +1,24 @@
 import './App.css';
-import Card from './widgets/Card/Card.tsx';
+import ColumnCard from './entities/Column/ui/ColumnCard.tsx';
+import TaskCard from './entities/Task/ui/TaskCard.tsx';
 
 function App() {
-  return (
-    <div className="App">
-      <Card />
-    </div>
-  );
+	return (
+		<div className='App'>
+			<ColumnCard
+				title='Ready'
+				tasks={[
+					{
+						id: '1',
+						title: 'task title',
+						description: 'task description',
+						tags: ['tag1', 'tag2'],
+					},
+				]}
+				TaskComponent={TaskCard}
+			/>
+		</div>
+	);
 }
 
 export default App;

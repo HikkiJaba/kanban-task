@@ -1,0 +1,19 @@
+.inProgress-div {
+    background-color: rgba(227, 243, 252, 1);
+    display: inline-block;
+    padding: 4px 6px 4px 16px;
+    position: relative;
+    border-radius: 100px;
+}
+
+.inProgress-div::before { 
+    content: "";
+    position: absolute;
+    background-color: rgba(108, 191, 239, 1);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+}

@@ -1,0 +1,19 @@
+.done-div {
+    background-color: rgba(238, 248, 232, 1);
+    display: inline-block;
+    padding: 4px 6px 4px 16px;
+    position: relative;
+    border-radius: 100px;
+}
+
+.done-div::before { 
+    content: "";
+    position: absolute;
+    background-color: rgba(163, 217, 130, 1);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+}

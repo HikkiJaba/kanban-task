@@ -1,18 +1,16 @@
 import React from 'react';
-import Status from '../../../shared/UIkit/Status/Status.tsx';
-import Tag from '../../../shared/UIkit/Tag/Tag.tsx';
-import { Task } from '../../../types.tsx';
+import Status from '../../../../shared/UIkit/Status/Status.tsx';
+import Tag from '../../../../shared/UIkit/Tag/Tag.tsx';
+import { Task } from '../../../../types.tsx';
 import './TaskCard.css';
 
-
 interface TaskCardProps {
-    task: Task;
-    color?: string;
+	task: Task;
+	color?: string;
 	title?: string;
 }
 
 export default function TaskCard({ task, color, title }: TaskCardProps) {
-	console.log(title);
 	/*getAllTasks();
 	addTask(
 		{
@@ -22,8 +20,8 @@ export default function TaskCard({ task, color, title }: TaskCardProps) {
 			tags: ['taaag'],
 		},
 		'1'
-	);
-	editTask('4', 'new title', 'new description', ['new tag']);*/
+	);*/
+	//editTask('5', 'asdasd', 'new description', ['new taaag']);
 	//deleteTask('5');
 
 	return (

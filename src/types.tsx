@@ -10,6 +10,6 @@ export type Task = {
 export type Column = {
 	title: string;
 	tasks: Task[];
-	TaskComponent: React.FC<{ task: Task }>;
+	TaskComponent: React.FC<{ task: Task; color: string; title: string }>;
 	color: string;
 };

@@ -13,8 +13,14 @@ export default function ColumnCard({
 			<h2>{title}</h2>
 			<div className='column-tasks' style={{ backgroundColor: color }}>
 				{tasks.map(task => {
-					// @ts-ignore
-					return <TaskComponent key={task.id} task={task} color={color} title={title}/>; //тут ошибка с color, я чуть позже гляну
+					return (
+						<TaskComponent
+							key={task.id}
+							task={task}
+							color={color}
+							title={title}
+						/>
+					); //тут ошибка с color, я чуть позже гляну
 				})}
 			</div>
 		</div>

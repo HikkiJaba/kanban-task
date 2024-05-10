@@ -1,20 +1,21 @@
 .status-div {
-    background-color: var(--status-color, rgba(251, 231, 229, 1));
-    display: inline-block;
-    padding: 4px 6px 4px 16px;
-    position: relative;
-    border-radius: 100px;
-    color: black;
+	--darker-color: red;
+	background-color: transparent;
+	display: inline-block;
+	padding: 4px 6px 4px 16px;
+	position: relative;
+	border-radius: 100px;
+	color: black;
 }
 
-.darker-color::before { 
-    content: "";
-    position: absolute;
-    background-color:  var(--darker-color);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    left: 4px;
-    top: 50%;
-    transform: translateY(-50%);
+.darker-color::before {
+	content: '';
+	position: absolute;
+	background-color: var(--darker-color);
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	left: 4px;
+	top: 50%;
+	transform: translateY(-50%);
 }

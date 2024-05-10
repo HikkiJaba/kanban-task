@@ -12,7 +12,10 @@ export default function Status({ color, title }) {
 	const darkerColor = `rgba(${r}, ${g}, ${b}, ${a - 0.5})`;
 
 	return (
-		<div className='status-div'>
+		<div
+			className='status-div'
+			style={{ '--status-color': color } as React.CSSProperties}
+		>
 			<span>{title}</span>
 			<span
 				className='darker-color'

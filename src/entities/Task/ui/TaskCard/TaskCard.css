@@ -4,23 +4,40 @@
 	padding: 8px;
 	display: flex;
 	flex-direction: column;
+	gap: 8px;
 	width: 192px;
 	height: auto;
 	border-radius: 4px;
+	font-family: Inter, sans-serif;
 }
 
 .card h3 {
-	margin: 8px 0 8px 0;
+	margin: 0;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16.8px;
+}
+
+.card-description {
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.52px;
+	color: #6c6c6c;
 }
 
 .card-status-div {
-	margin: 8px 0 8px 0;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.52px;
+	text-align: left;
+	color: black;
 }
 
 .card-tag-div {
 	display: flex;
-}
-
-.card-tag-div div {
-	margin-right: 4px;
+	gap: 4px;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.52px;
+	color: #52565c;
 }

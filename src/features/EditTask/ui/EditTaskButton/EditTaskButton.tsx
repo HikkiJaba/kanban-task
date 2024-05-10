@@ -11,7 +11,11 @@ export default function EditTaskButton({ taskId }: { taskId: string }) {
 	const task = useStore(state => state.tasks.find(item => item.id === taskId));
 	const edit = useStore().editTask;
 
-	const handleSubmit = (newTitle, newDescription, newTags) => {
+	const handleSubmit = (
+		newTitle: string,
+		newDescription: string,
+		newTags: string[]
+	) => {
 		const putTask = async () => {
 			const newTask = await editTask(taskId, newTitle, newDescription, newTags);
 			if (newTask) {

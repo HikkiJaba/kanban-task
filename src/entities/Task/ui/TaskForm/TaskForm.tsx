@@ -46,6 +46,7 @@ export default function TaskForm({
 
 	return (
 		<form className='task-form' onSubmit={onSubmit}>
+			<h2>{`${type} task`}</h2>
 			<input
 				value={task.title}
 				onChange={handleChange}

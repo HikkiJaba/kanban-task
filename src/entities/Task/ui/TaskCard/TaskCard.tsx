@@ -18,21 +18,15 @@ export default function TaskCard({
 	action,
 }: TaskCardProps) {
 	return (
-		<section className='card' draggable="true">
+		<section className='card' draggable='true'>
 			<h3>{task.title}</h3>
-			<div>
-				<span>{task.description}</span>
-			</div>
+			<div className='card-description'>{task.description}</div>
 			<div className='card-status-div'>
 				<Status color={color} title={title} />
 			</div>
 			<div className='card-tag-div'>
 				{task.tags.map((tag, index) => {
-					return (
-						<div key={index}>
-							<Tag tag={tag} />
-						</div>
-					);
+					return <Tag key={index} tag={tag} />;
 				})}
 			</div>
 			{action({ taskId: task.id })}

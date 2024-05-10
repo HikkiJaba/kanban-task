@@ -18,7 +18,7 @@ export default function TaskCard({
 	action,
 }: TaskCardProps) {
 	return (
-		<section className='card'>
+		<section className='card' draggable="true">
 			<h3>{task.title}</h3>
 			<div>
 				<span>{task.description}</span>

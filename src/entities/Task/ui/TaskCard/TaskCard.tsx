@@ -4,12 +4,12 @@ import Tag from '../../../../shared/UIkit/Tag/Tag.tsx';
 import { Task } from '../../../../types.tsx';
 import './TaskCard.css';
 
-interface TaskCardProps {
+type TaskCardProps = {
 	task: Task;
 	color: string;
 	title: string;
 	action: React.FC<{ taskId: string }>;
-}
+};
 
 export default function TaskCard({
 	task,

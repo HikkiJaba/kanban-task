@@ -2,28 +2,22 @@ import React, { PropsWithChildren } from 'react';
 import { Column } from '../../../types';
 import './ColumnCard.css';
 
+type ColumnCardProps = {
+	action: React.FC<{ columnId: string }>;
+} & Column;
+
 export default function ColumnCard({
+	id,
 	title,
 	color,
-	//action,
+	action,
 	children,
-}: PropsWithChildren<Column>) {
+}: PropsWithChildren<ColumnCardProps>) {
 	return (
 		<div className='column'>
 			<h2>{title}</h2>
 			<div className='column-tasks' style={{ backgroundColor: color }}>
-				{/* {tasks.map(task => {
-					return (
-						<TaskComponent
-							key={task.id}
-							task={task}
-							color={color}
-							title={title}
-							action={EditTaskButton}
-						/>
-					); //тут ошибка с color, я чуть позже гляну
-				})} */}
-				{/* {action} */}
+				{action({ columnId: id })}
 				{children}
 			</div>
 		</div>

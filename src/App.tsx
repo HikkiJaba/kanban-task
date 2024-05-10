@@ -3,6 +3,7 @@ import './App.css';
 import ColumnCard from './entities/Column/ui/ColumnCard.tsx';
 import { getAllTasks } from './entities/Task/api/action.ts';
 import TaskCard from './entities/Task/ui/TaskCard/TaskCard.tsx';
+import AddTaskButton from './features/AddTask/ui/AddTaskButton/AddTaskButton.tsx';
 import EditTaskButton from './features/EditTask/ui/EditTaskButton/EditTaskButton.tsx';
 import useStore from './shared/lib/store/store.ts';
 
@@ -30,6 +31,7 @@ function App() {
 				title='In progress'
 				position={0}
 				color='rgba(98, 83, 218, 1)'
+				action={AddTaskButton}
 			>
 				{tasks.map(task => {
 					return (

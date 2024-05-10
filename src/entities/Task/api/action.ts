@@ -19,23 +19,31 @@ export const getAllTasks = async () => {
 };
 
 export const addTask = async (
-	newTask: Omit<Task, 'id' | 'status'>,
-	columnId: string
+	columnId: string,
+	newTitle: string,
+	newDescription: string,
+	newTags: string[]
 ) => {
-	fetch(`${baseURL}/columns/${columnId}/tasks`, {
+	const task = await fetch(`${baseURL}/columns/${columnId}/tasks`, {
 		method: 'POST',
 		headers: { 'content-type': 'application/json' },
-		body: JSON.stringify(newTask),
+		body: JSON.stringify({
+			title: newTitle,
+			description: newDescription,
+			tags: newTags,
+		}),
 	})
 		.then(response => {
 			if (response.ok) {
-				return response.json();
+				return response.json() as Promise<Task>;
 			} else throw new Error('Error occurred!');
 		})
 		.then(task => {
-			console.log(task);
+			return task;
 		})
 		.catch(error => console.log(error));
+
+	return task;
 };
 
 export const editTask = async (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Column } from '../../../types';
+import { ColumnWithTasks } from '../../../types';
 import './ColumnCard.css';
 
 export default function ColumnCard({
@@ -7,7 +7,7 @@ export default function ColumnCard({
 	tasks,
 	color,
 	TaskComponent,
-}: Column) {
+}: ColumnWithTasks) {
 	return (
 		<div className='column'>
 			<h2>{title}</h2>

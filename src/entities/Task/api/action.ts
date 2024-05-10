@@ -1,23 +1,20 @@
+import { baseURL } from '../../../app/constants/constants.ts';
 import { Task } from '../../../types';
 
 export const getAllTasks = async () => {
-	const allTasks = await fetch(
-		'https://663a57f01ae792804beef9fd.mockapi.io/api/tasks',
-		{
-			method: 'GET',
-			headers: { 'content-type': 'application/json' },
-		}
-	)
+	const allTasks = await fetch(`${baseURL}/tasks`, {
+		method: 'GET',
+		headers: { 'content-type': 'application/json' },
+	})
 		.then(response => {
 			if (response.ok) {
-				return response.json();
+				return response.json() as Promise<Task[]>;
 			} else throw new Error('Error occurred!');
 		})
 		.then(tasks => {
 			return tasks;
 		})
 		.catch(error => console.log(error));
-
 	return allTasks;
 };
 
@@ -25,14 +22,11 @@ export const addTask = async (
 	newTask: Omit<Task, 'id' | 'status'>,
 	columnId: string
 ) => {
-	fetch(
-		`https://663a57f01ae792804beef9fd.mockapi.io/api/columns/${columnId}/tasks`,
-		{
-			method: 'POST',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify(newTask),
-		}
-	)
+	fetch(`${baseURL}/columns/${columnId}/tasks`, {
+		method: 'POST',
+		headers: { 'content-type': 'application/json' },
+		body: JSON.stringify(newTask),
+	})
 		.then(response => {
 			if (response.ok) {
 				return response.json();
@@ -50,7 +44,7 @@ export const editTask = async (
 	newDescription: string,
 	newTags: string[]
 ) => {
-	fetch(`https://663a57f01ae792804beef9fd.mockapi.io/api/tasks/${taskId}`, {
+	fetch(`${baseURL}/tasks/${taskId}`, {
 		method: 'PUT',
 		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify({
@@ -70,8 +64,8 @@ export const editTask = async (
 		.catch(error => console.log(error));
 };
 
-export const deleteTask = async (taskId: string) => {
-	fetch(`https://663a57f01ae792804beef9fd.mockapi.io/api/tasks/${taskId}`, {
+export const deleteTask = async (columnId: string, taskId: string) => {
+	fetch(`${baseURL}/columns/${columnId}/tasks/${taskId}`, {
 		method: 'DELETE',
 	})
 		.then(response => {

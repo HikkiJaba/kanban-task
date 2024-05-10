@@ -2,14 +2,18 @@ export type Task = {
 	id: string;
 	title: string;
 	description: string;
-	status: string;
 	tags: string[];
-	color?: string;
+	columnId: string;
 };
 
 export type Column = {
+	id: string;
 	title: string;
+	color: string;
+	position: number;
+};
+
+export type ColumnWithTasks = {
 	tasks: Task[];
 	TaskComponent: React.FC<{ task: Task; color: string; title: string }>;
-	color: string;
-};
+} & Column;

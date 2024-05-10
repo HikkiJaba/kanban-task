@@ -26,25 +26,132 @@ function App() {
 
 	return (
 		<div className='App'>
-			<ColumnCard
-				id='1'
-				title='In progress'
-				position={0}
-				color='rgba(98, 83, 218, 1)'
-				action={AddTaskButton}
-			>
-				{tasks.map(task => {
-					return (
-						<TaskCard
-							key={task.id}
-							task={task}
-							color='rgba(98, 83, 218, 1)'
-							title='In progress'
-							action={EditTaskButton}
-						/>
-					);
-				})}
-			</ColumnCard>
+			<div>
+				<ColumnCard
+					id='1'
+					title='Not started'
+					position={0}
+					color='rgba(248, 250, 252, 1)'
+					action={AddTaskButton}
+				>
+					{tasks.map(task => {
+						return (
+							<TaskCard
+								key={task.id}
+								task={task}
+								color='rgba(248, 250, 252, 1)'
+								title='Not started'
+								action={EditTaskButton}
+							/>
+						);
+					})}
+				</ColumnCard>
+			</div>
+			<div>
+				<ColumnCard
+					id='1'
+					title='Ready'
+					position={0}
+					color='rgba(235, 235, 255, 1)'
+					action={AddTaskButton}
+				>
+					{tasks.map(task => {
+						return (
+							<TaskCard
+								key={task.id}
+								task={task}
+								color='rgba(235, 235, 255, 1)'
+								title='Ready'
+								action={EditTaskButton}
+							/>
+						);
+					})}
+				</ColumnCard>
+			</div>
+			<div>
+				<ColumnCard
+					id='1'
+					title='In progress'
+					position={0}
+					color='rgba(227, 243, 252, 1)'
+					action={AddTaskButton}
+				>
+					{tasks.map(task => {
+						return (
+							<TaskCard
+								key={task.id}
+								task={task}
+								color='rgba(227, 243, 252, 1)'
+								title='In progress'
+								action={EditTaskButton}
+							/>
+						);
+					})}
+				</ColumnCard>
+			</div>
+			<div>
+				<ColumnCard
+					id='1'
+					title='Blocked'
+					position={0}
+					color='rgba(251, 231, 229, 1)'
+					action={AddTaskButton}
+				>
+					{tasks.map(task => {
+						return (
+							<TaskCard
+								key={task.id}
+								task={task}
+								color='rgba(251, 231, 229, 1)'
+								title='Blocked'
+								action={EditTaskButton}
+							/>
+						);
+					})}
+				</ColumnCard>
+			</div>
+			<div>
+				<ColumnCard
+					id='1'
+					title='Done'
+					position={0}
+					color='rgba(238, 248, 232, 1)'
+					action={AddTaskButton}
+				>
+					{tasks.map(task => {
+						return (
+							<TaskCard
+								key={task.id}
+								task={task}
+								color='rgba(238, 248, 232, 1)'
+								title='Done'
+								action={EditTaskButton}
+							/>
+						);
+					})}
+				</ColumnCard>
+			</div>
+			<div>
+				<ColumnCard
+					id='1'
+					title='Cancelled'
+					position={0}
+					color='rgba(236, 237, 239, 1)'
+					action={AddTaskButton}
+				>
+					{tasks.map(task => {
+						return (
+							<TaskCard
+								key={task.id}
+								task={task}
+								color='rgba(236, 237, 239, 1)'
+								title='Cancelled'
+								action={EditTaskButton}
+							/>
+						);
+					})}
+				</ColumnCard>
+			</div>
 		</div>
 	);
 }

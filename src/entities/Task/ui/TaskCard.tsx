@@ -1,10 +1,18 @@
 import React from 'react';
-import Ready from '../../../shared/UIkit/Status/Ready/Ready.tsx';
+import Status from '../../../shared/UIkit/Status/Status.tsx';
 import Tag from '../../../shared/UIkit/Tag/Tag.tsx';
 import { Task } from '../../../types.tsx';
 import './TaskCard.css';
 
-export default function TaskCard({ task }: { task: Task }) {
+
+interface TaskCardProps {
+    task: Task;
+    color?: string;
+	title?: string;
+}
+
+export default function TaskCard({ task, color, title }: TaskCardProps) {
+	console.log(title);
 	/*getAllTasks();
 	addTask(
 		{
@@ -25,7 +33,7 @@ export default function TaskCard({ task }: { task: Task }) {
 				<span>{task.description}</span>
 			</div>
 			<div className='card-status-div'>
-				<Ready />
+				<Status color={color} title={title} />
 			</div>
 			<div className='card-tag-div'>
 				{task.tags.map((tag, index) => {

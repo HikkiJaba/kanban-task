@@ -18,7 +18,7 @@ function App() {
 					},
 				]}
 				TaskComponent={TaskCard}
-				color='aaaaaa'
+				color='rgba(235, 235, 255, 1)'
 			/>
 		</div>
 	);

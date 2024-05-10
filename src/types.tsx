@@ -4,6 +4,7 @@ export type Task = {
 	description: string;
 	status: string;
 	tags: string[];
+	color?: string;
 };
 
 export type Column = {

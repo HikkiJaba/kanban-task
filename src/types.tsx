@@ -15,5 +15,10 @@ export type Column = {
 
 export type ColumnWithTasks = {
 	tasks: Task[];
-	TaskComponent: React.FC<{ task: Task; color: string; title: string }>;
+	TaskComponent: React.FC<{
+		task: Task;
+		color: string;
+		title: string;
+		action: React.FC;
+	}>;
 } & Column;

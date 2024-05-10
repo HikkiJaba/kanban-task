@@ -44,7 +44,7 @@ export const editTask = async (
 	newDescription: string,
 	newTags: string[]
 ) => {
-	fetch(`${baseURL}/tasks/${taskId}`, {
+	const task = await fetch(`${baseURL}/tasks/${taskId}`, {
 		method: 'PUT',
 		headers: { 'content-type': 'application/json' },
 		body: JSON.stringify({
@@ -55,13 +55,15 @@ export const editTask = async (
 	})
 		.then(response => {
 			if (response.ok) {
-				return response.json();
+				return response.json() as Promise<Task>;
 			} else throw new Error('Error occurred!');
 		})
 		.then(task => {
-			console.log(task);
+			return task;
 		})
 		.catch(error => console.log(error));
+
+	return task;
 };
 
 export const deleteTask = async (columnId: string, taskId: string) => {

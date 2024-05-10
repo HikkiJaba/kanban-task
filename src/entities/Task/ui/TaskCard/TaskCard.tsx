@@ -6,24 +6,17 @@ import './TaskCard.css';
 
 interface TaskCardProps {
 	task: Task;
-	color?: string;
-	title?: string;
+	color: string;
+	title: string;
+	action: React.FC<{ taskId: string }>;
 }
 
-export default function TaskCard({ task, color, title }: TaskCardProps) {
-	/*getAllTasks();
-	addTask(
-		{
-			title: 'Fix the auto height of the swim lanes',
-			description:
-				'Hope this simple kanban helps in running the UX processes without leaving figma',
-			tags: ['taaag'],
-		},
-		'1'
-	);*/
-	//editTask('5', 'asdasd', 'new description', ['new taaag']);
-	//deleteTask('5');
-
+export default function TaskCard({
+	task,
+	color,
+	title,
+	action,
+}: TaskCardProps) {
 	return (
 		<section className='card'>
 			<h3>{task.title}</h3>
@@ -42,6 +35,7 @@ export default function TaskCard({ task, color, title }: TaskCardProps) {
 					);
 				})}
 			</div>
+			{action({ taskId: task.id })}
 		</section>
 	);
 }

@@ -24,7 +24,7 @@ export default function ColumnCard({
 				{editColumnAction({ columnId: id })}
 				{deleteColumnAction({ columnId: id })}
 			</div>
-			<div className='column-tasks' style={{ backgroundColor: color }}>
+			<div className='column-tasks' style={{ backgroundColor: `${color}20` }}>
 				{addTaskAction({ columnId: id })}
 				{children}
 			</div>

@@ -53,7 +53,7 @@ export default function KanbanBoard() {
 								id={column.id}
 								title={column.title}
 								position={column.position}
-								color=/*{column.color}*/ {'rgba(235, 235, 255, 1)'} //переписать логику для цвета так как рандомные выдает почему-то только в формате hex
+								color={column.color}
 								addTaskAction={AddTaskButton}
 								editColumnAction={EditColumnButton}
 								deleteColumnAction={DeleteColumnButton}
@@ -66,7 +66,7 @@ export default function KanbanBoard() {
 												<li key={task.id}>
 													<TaskCard
 														task={task}
-														color=/*{column.color}*/ {'rgba(235, 235, 255, 1)'}
+														color={column.color}
 														title={column.title}
 														actions={[EditTaskButton, DeleteTaskButton]}
 													/>

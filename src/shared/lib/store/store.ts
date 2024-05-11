@@ -3,6 +3,8 @@ import { Column, Task } from '../../../types';
 
 type TaskState = {
 	tasks: Task[];
+	isTaskFetching: boolean;
+	setTaskFetching: (isTaskFetching: boolean) => void;
 	setTask: (task: Task) => void;
 	setTasks: (tasks: Task[]) => void;
 	editTask: (task: Task) => void;
@@ -11,6 +13,8 @@ type TaskState = {
 
 type ColumnState = {
 	columns: Column[];
+	isColumnFetching: boolean;
+	setColumnFetching: (isColumnFetching: boolean) => void;
 	setColumn: (column: Column) => void;
 	setColumns: (columns: Column[]) => void;
 	editColumn: (column: Column) => void;
@@ -20,6 +24,8 @@ type ColumnState = {
 const useStore = create<TaskState & ColumnState>()(set => ({
 	tasks: [],
 	columns: [],
+	isTaskFetching: false,
+	isColumnFetching: false,
 
 	setTask: task => {
 		set(state => {
@@ -64,6 +70,20 @@ const useStore = create<TaskState & ColumnState>()(set => ({
 				tasks: newTasks,
 			};
 		});
+	},
+
+	setTaskFetching: isTaskFetching => {
+		set(state => ({
+			...state,
+			isTaskFetching,
+		}));
+	},
+
+	setColumnFetching: isColumnFetching => {
+		set(state => ({
+			...state,
+			isColumnFetching,
+		}));
 	},
 
 	setColumn: column => {

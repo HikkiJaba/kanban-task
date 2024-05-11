@@ -9,6 +9,7 @@ export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 	);
 	const deleteColumnStore = useStore().deleteColumn;
 	const deleteTaskStore = useStore().deleteTask;
+	const { isColumnFetching, setColumnFetching } = useStore();
 
 	const handleClick = () => {
 		const removeColumn = async () => {
@@ -27,11 +28,13 @@ export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 					deleteColumnStore(columnId);
 				}
 			}
+			setColumnFetching(false);
 		};
+		setColumnFetching(true);
 		removeColumn();
 	};
 	return (
-		<button type='button' onClick={handleClick}>
+		<button type='button' onClick={handleClick} disabled={isColumnFetching}>
 			Delete
 		</button>
 	);

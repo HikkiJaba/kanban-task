@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Task } from '../../../../types';
+import useStore from '../../../../shared/lib/store/store.ts';
+import { Task } from '../../../../types.ts';
 import './TaskForm.css';
 
 type FormProps = {
@@ -24,6 +25,8 @@ export default function TaskForm({
 		description: initialTask?.description || '',
 		tags: initialTask?.tags || [],
 	});
+
+	const { isTaskFetching } = useStore();
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.name === 'tags') {
@@ -65,7 +68,9 @@ export default function TaskForm({
 				name='tags'
 				type='text'
 			/>
-			<button type='submit'>Save</button>
+			<button type='submit' disabled={isTaskFetching}>
+				Save
+			</button>
 			<button type='button' onClick={handleCancel}>
 				Cancel
 			</button>

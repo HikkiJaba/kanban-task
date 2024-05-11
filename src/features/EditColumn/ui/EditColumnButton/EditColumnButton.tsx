@@ -7,6 +7,7 @@ import useStore from '../../../../shared/lib/store/store.ts';
 
 export default function EditColumnButton({ columnId }: { columnId: string }) {
 	const { isOpen, open, close } = useModal();
+	const { setColumnFetching } = useStore();
 
 	const column = useStore(state =>
 		state.columns.find(item => item.id === columnId)
@@ -22,7 +23,9 @@ export default function EditColumnButton({ columnId }: { columnId: string }) {
 					close();
 				}
 			}
+			setColumnFetching(false);
 		};
+		setColumnFetching(true);
 		putColumn();
 	};
 

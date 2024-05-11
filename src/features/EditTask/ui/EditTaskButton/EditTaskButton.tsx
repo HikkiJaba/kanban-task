@@ -10,6 +10,7 @@ export default function EditTaskButton({ taskId }: { taskId: string }) {
 
 	const task = useStore(state => state.tasks.find(item => item.id === taskId));
 	const edit = useStore().editTask;
+	const { setTaskFetching } = useStore();
 
 	const handleSubmit = (
 		newTitle: string,
@@ -23,14 +24,16 @@ export default function EditTaskButton({ taskId }: { taskId: string }) {
 					newTitle,
 					newDescription,
 					newTags,
-					task?.columnId
+					task.columnId
 				);
 				if (newTask) {
 					edit(newTask);
 					close();
 				}
+				setTaskFetching(false);
 			}
 		};
+		setTaskFetching(true);
 		putTask();
 	};
 

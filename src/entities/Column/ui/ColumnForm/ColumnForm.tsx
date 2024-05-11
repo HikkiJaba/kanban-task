@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Column } from '../../../../types';
+import useStore from '../../../../shared/lib/store/store.ts';
+import { Column } from '../../../../types.ts';
 import './ColumnForm.css';
 
 type FormProps = {
@@ -15,9 +16,7 @@ export default function ColumnForm({
 	type,
 	initialColumn,
 }: FormProps) {
-	/*const [column, setColumn] = useState<Omit<Column, 'id' | 'color' | 'position'>>({
-		title: initialColumn?.title || '',
-	});*/
+	const { isColumnFetching } = useStore();
 
 	const [title, setTitle] = useState<string>(initialColumn?.title || '');
 
@@ -35,7 +34,9 @@ export default function ColumnForm({
 				name='title'
 				type='text'
 			/>
-			<button type='submit'>Save</button>
+			<button type='submit' disabled={isColumnFetching}>
+				Save
+			</button>
 			<button type='button' onClick={handleCancel}>
 				Cancel
 			</button>

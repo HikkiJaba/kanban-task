@@ -7,7 +7,7 @@ import useStore from '../../../../shared/lib/store/store.ts';
 
 export default function AddColumnButton() {
 	const { isOpen, open, close } = useModal();
-	const { columns, setColumn } = useStore();
+	const { columns, setColumn, setColumnFetching } = useStore();
 
 	const newPosition = columns.length + 1;
 
@@ -18,7 +18,9 @@ export default function AddColumnButton() {
 				setColumn(newColumn);
 				close();
 			}
+			setColumnFetching(false);
 		};
+		setColumnFetching(true);
 		putColumn();
 	};
 

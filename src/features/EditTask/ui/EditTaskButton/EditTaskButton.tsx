@@ -17,10 +17,18 @@ export default function EditTaskButton({ taskId }: { taskId: string }) {
 		newTags: string[]
 	) => {
 		const putTask = async () => {
-			const newTask = await editTask(taskId, newTitle, newDescription, newTags);
-			if (newTask) {
-				edit(newTask);
-				close();
+			if (task) {
+				const newTask = await editTask(
+					taskId,
+					newTitle,
+					newDescription,
+					newTags,
+					task?.columnId
+				);
+				if (newTask) {
+					edit(newTask);
+					close();
+				}
 			}
 		};
 		putTask();

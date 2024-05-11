@@ -50,7 +50,8 @@ export const editTask = async (
 	taskId: string,
 	newTitle: string,
 	newDescription: string,
-	newTags: string[]
+	newTags: string[],
+	newColumnId: string
 ) => {
 	const task = await fetch(`${baseURL}/tasks/${taskId}`, {
 		method: 'PUT',
@@ -59,6 +60,7 @@ export const editTask = async (
 			title: newTitle,
 			description: newDescription,
 			tags: newTags,
+			columnId: newColumnId,
 		}),
 	})
 		.then(response => {

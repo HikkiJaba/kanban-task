@@ -17,6 +17,22 @@
 	line-height: 16.8px;
 }
 
+.card-title {
+	display: flex;
+	justify-content: space-between;
+}
+
+.card-buttons {
+	display: flex;
+	gap: 6px;
+	opacity: 0;
+	transition: opacity 0.3s ease-out;
+}
+
+.card:hover .card-buttons {
+	opacity: 100%;
+}
+
 .card-description {
 	font-size: 12px;
 	font-weight: 400;
@@ -34,6 +50,7 @@
 
 .card-tag-div {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 4px;
 	font-size: 12px;
 	font-weight: 400;

@@ -1,5 +1,7 @@
 import { deleteColumn } from '../../../../entities/Column/api/action';
 import { deleteAllTasksByColumn } from '../../../../entities/Task/api/action';
+import IconButton from '../../../../shared/UIkit/Button/IconButton';
+import { ReactComponent as DeleteIcon } from '../../../../shared/icons/delete.svg';
 import useStore from '../../../../shared/lib/store/store';
 
 export default function DeleteColumnButton({ columnId }: { columnId: string }) {
@@ -33,8 +35,12 @@ export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 		removeColumn();
 	};
 	return (
-		<button type='button' onClick={handleClick} disabled={isColumnFetching}>
-			Delete
-		</button>
+		<IconButton
+			onClick={handleClick}
+			svg={<DeleteIcon />}
+			type='delete'
+			position='column'
+			disabled={isColumnFetching}
+		/>
 	);
 }

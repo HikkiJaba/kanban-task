@@ -1,5 +1,6 @@
 .kanban-board {
 	display: flex;
+	justify-content: center;
 }
 
 .kanban-columns-list {
@@ -13,6 +14,10 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 24px;
+}
+
+.kanban-add-button {
+	margin-left: 40px;
 }
 
 li {

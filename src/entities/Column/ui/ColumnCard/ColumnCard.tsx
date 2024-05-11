@@ -19,11 +19,13 @@ export default function ColumnCard({
 }: PropsWithChildren<ColumnCardProps>) {
 	return (
 		<div className='column'>
-			<h2>{title}</h2>
-			<div className='column-buttons'>
-				{editColumnAction({ columnId: id })}
-				{deleteColumnAction({ columnId: id })}
-			</div>
+			<header className='column-header'>
+				<h2>{title}</h2>
+				<div className='column-buttons'>
+					{editColumnAction({ columnId: id })}
+					{deleteColumnAction({ columnId: id })}
+				</div>
+			</header>
 			<div className='column-tasks' style={{ backgroundColor: `${color}20` }}>
 				{addTaskAction({ columnId: id })}
 				{children}

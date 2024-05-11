@@ -68,7 +68,8 @@ export default function KanbanBoard() {
 														task={task}
 														color={column.color}
 														title={column.title}
-														actions={[EditTaskButton, DeleteTaskButton]}
+														editTaskAction={EditTaskButton}
+														deleteTaskAction={DeleteTaskButton}
 													/>
 												</li>
 											);
@@ -79,7 +80,9 @@ export default function KanbanBoard() {
 					);
 				})}
 			</ul>
-			<AddColumnButton />
+			<div className='kanban-add-button'>
+				<AddColumnButton />
+			</div>
 		</div>
 	);
 }

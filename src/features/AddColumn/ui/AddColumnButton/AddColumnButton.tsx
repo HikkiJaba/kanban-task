@@ -1,6 +1,8 @@
 import { addColumn } from '../../../../entities/Column/api/action';
 import ColumnForm from '../../../../entities/Column/ui/ColumnForm/ColumnForm';
+import IconButton from '../../../../shared/UIkit/Button/IconButton';
 import Modal from '../../../../shared/UIkit/Modal/Modal';
+import { ReactComponent as AddIcon } from '../../../../shared/icons/add.svg';
 import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal';
 import useStore from '../../../../shared/lib/store/store';
 
@@ -25,10 +27,12 @@ export default function AddColumnButton() {
 
 	return (
 		<div>
-			<button type='button' onClick={open}>
-				Add
-			</button>
-
+			<IconButton
+				onClick={open}
+				svg={<AddIcon />}
+				type='create'
+				position='board'
+			/>
 			<Modal isOpen={isOpen} close={close}>
 				<ColumnForm
 					type='Create'

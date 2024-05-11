@@ -1,6 +1,8 @@
 import { editTask } from '../../../../entities/Task/api/action';
 import TaskForm from '../../../../entities/Task/ui/TaskForm/TaskForm';
+import IconButton from '../../../../shared/UIkit/Button/IconButton';
 import Modal from '../../../../shared/UIkit/Modal/Modal';
+import { ReactComponent as EditIcon } from '../../../../shared/icons/edit.svg';
 import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal';
 import useStore from '../../../../shared/lib/store/store';
 
@@ -38,9 +40,12 @@ export default function EditTaskButton({ taskId }: { taskId: string }) {
 
 	return (
 		<div>
-			<button onClick={open} type='button'>
-				edit
-			</button>
+			<IconButton
+				onClick={open}
+				svg={<EditIcon />}
+				type='edit'
+				position='task'
+			/>
 			<Modal isOpen={isOpen} close={close}>
 				<TaskForm
 					type='Edit'

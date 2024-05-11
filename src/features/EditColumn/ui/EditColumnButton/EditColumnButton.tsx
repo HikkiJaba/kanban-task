@@ -1,6 +1,8 @@
 import { editColumn } from '../../../../entities/Column/api/action';
 import ColumnForm from '../../../../entities/Column/ui/ColumnForm/ColumnForm';
+import IconButton from '../../../../shared/UIkit/Button/IconButton';
 import Modal from '../../../../shared/UIkit/Modal/Modal';
+import { ReactComponent as EditIcon } from '../../../../shared/icons/edit.svg';
 import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal';
 import useStore from '../../../../shared/lib/store/store';
 
@@ -30,9 +32,12 @@ export default function EditColumnButton({ columnId }: { columnId: string }) {
 
 	return (
 		<div>
-			<button onClick={open} type='button'>
-				edit
-			</button>
+			<IconButton
+				onClick={open}
+				svg={<EditIcon />}
+				type='edit'
+				position='column'
+			/>
 			<Modal isOpen={isOpen} close={close}>
 				<ColumnForm
 					type='Edit'

@@ -8,14 +8,14 @@ type TaskCardProps = {
 	task: Task;
 	color: string;
 	title: string;
-	action: React.FC<{ taskId: string }>;
+	actions: React.FC<{ taskId: string }>[];
 };
 
 export default function TaskCard({
 	task,
 	color,
 	title,
-	action,
+	actions,
 }: TaskCardProps) {
 	return (
 		<section className='card' draggable='true'>
@@ -29,7 +29,7 @@ export default function TaskCard({
 					return <Tag key={index} tag={tag} />;
 				})}
 			</div>
-			{action({ taskId: task.id })}
+			{actions.map(action => action({ taskId: task.id }))}
 		</section>
 	);
 }

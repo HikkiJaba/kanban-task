@@ -75,16 +75,39 @@ export const editTask = async (
 };
 
 export const deleteTask = async (columnId: string, taskId: string) => {
-	fetch(`${baseURL}/columns/${columnId}/tasks/${taskId}`, {
-		method: 'DELETE',
-	})
+	const deletedTask = await fetch(
+		`${baseURL}/columns/${columnId}/tasks/${taskId}`,
+		{
+			method: 'DELETE',
+		}
+	)
 		.then(response => {
 			if (response.ok) {
-				return response.json();
+				return response.json() as Promise<Task>;
 			} else throw new Error('Error occurred!');
 		})
 		.then(task => {
-			console.log(task);
+			return task;
 		})
 		.catch(error => console.log(error));
+	return deletedTask;
+};
+
+export const deleteAllTasksByColumn = async (columnId: string) => {
+	const tasksResponse = await fetch(`${baseURL}/columns/${columnId}/tasks`, {
+		method: 'GET',
+		headers: { 'content-type': 'application/json' },
+	});
+	const tasks = (await tasksResponse.json()) as Task[];
+	// .then(response => {
+	// 	if (response.ok) {
+	// 		return response.json() as Promise<Task[]>;
+	// 	} else throw new Error('Error occurred!');
+	// })
+	// .catch(error => console.log(error));
+
+	const result = await Promise.all(
+		tasks.map(task => deleteTask(columnId, task.id))
+	);
+	return result;
 };

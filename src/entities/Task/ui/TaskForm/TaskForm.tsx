@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import useStore from '../../../../shared/lib/store/store.ts';
-import { Task } from '../../../../types.ts';
+import useStore from '../../../../shared/lib/store/store';
+import { Task } from '../../../../types';
 import './TaskForm.css';
 
 type FormProps = {

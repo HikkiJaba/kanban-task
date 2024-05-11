@@ -1,1 +1,1 @@
-export * from './ui/TaskCard/TaskCard.tsx';
+export * from './ui/TaskCard/TaskCard';

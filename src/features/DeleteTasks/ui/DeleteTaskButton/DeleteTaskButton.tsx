@@ -1,6 +1,5 @@
-import React from 'react';
-import { deleteTask } from '../../../../entities/Task/api/action.ts';
-import useStore from '../../../../shared/lib/store/store.ts';
+import { deleteTask } from '../../../../entities/Task/api/action';
+import useStore from '../../../../shared/lib/store/store';
 
 export default function DeleteTaskButton({ taskId }: { taskId: string }) {
 	const task = useStore(state => state.tasks.find(item => item.id === taskId));

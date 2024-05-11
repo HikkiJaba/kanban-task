@@ -1,7 +1,6 @@
-import React from 'react';
-import { deleteColumn } from '../../../../entities/Column/api/action.ts';
-import { deleteAllTasksByColumn } from '../../../../entities/Task/api/action.ts';
-import useStore from '../../../../shared/lib/store/store.ts';
+import { deleteColumn } from '../../../../entities/Column/api/action';
+import { deleteAllTasksByColumn } from '../../../../entities/Task/api/action';
+import useStore from '../../../../shared/lib/store/store';
 
 export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 	const columnTasks = useStore(state =>

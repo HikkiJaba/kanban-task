@@ -1,4 +1,4 @@
-import { baseURL } from '../../../app/constants/constants.ts';
+import { baseURL } from '../../../app/constants/constants';
 import { Column } from '../../../types';
 
 export const getAllColumns = async () => {

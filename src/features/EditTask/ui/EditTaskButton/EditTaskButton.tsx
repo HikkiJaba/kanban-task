@@ -1,9 +1,8 @@
-import React from 'react';
-import { editTask } from '../../../../entities/Task/api/action.ts';
-import TaskForm from '../../../../entities/Task/ui/TaskForm/TaskForm.tsx';
-import Modal from '../../../../shared/UIkit/Modal/Modal.tsx';
-import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal.ts';
-import useStore from '../../../../shared/lib/store/store.ts';
+import { editTask } from '../../../../entities/Task/api/action';
+import TaskForm from '../../../../entities/Task/ui/TaskForm/TaskForm';
+import Modal from '../../../../shared/UIkit/Modal/Modal';
+import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal';
+import useStore from '../../../../shared/lib/store/store';
 
 export default function EditTaskButton({ taskId }: { taskId: string }) {
 	const { isOpen, open, close } = useModal();

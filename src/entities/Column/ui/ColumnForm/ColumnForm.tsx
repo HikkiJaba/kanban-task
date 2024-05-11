@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import useStore from '../../../../shared/lib/store/store.ts';
-import { Column } from '../../../../types.ts';
+import useStore from '../../../../shared/lib/store/store';
+import { Column } from '../../../../types';
 import './ColumnForm.css';
 
 type FormProps = {

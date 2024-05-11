@@ -1,9 +1,8 @@
-import React from 'react';
-import { addColumn } from '../../../../entities/Column/api/action.ts';
-import ColumnForm from '../../../../entities/Column/ui/ColumnForm/ColumnForm.tsx';
-import Modal from '../../../../shared/UIkit/Modal/Modal.tsx';
-import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal.ts';
-import useStore from '../../../../shared/lib/store/store.ts';
+import { addColumn } from '../../../../entities/Column/api/action';
+import ColumnForm from '../../../../entities/Column/ui/ColumnForm/ColumnForm';
+import Modal from '../../../../shared/UIkit/Modal/Modal';
+import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal';
+import useStore from '../../../../shared/lib/store/store';
 
 export default function AddColumnButton() {
 	const { isOpen, open, close } = useModal();

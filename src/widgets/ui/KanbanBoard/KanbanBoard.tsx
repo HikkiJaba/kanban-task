@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { getAllColumns } from '../../../entities/Column/api/action.ts';
-import ColumnCard from '../../../entities/Column/ui/ColumnCard/ColumnCard.tsx';
-import { getAllTasks } from '../../../entities/Task/api/action.ts';
-import TaskCard from '../../../entities/Task/ui/TaskCard/TaskCard.tsx';
-import AddColumnButton from '../../../features/AddColumn/ui/AddColumnButton/AddColumnButton.tsx';
-import AddTaskButton from '../../../features/AddTask/ui/AddTaskButton/AddTaskButton.tsx';
-import DeleteColumnButton from '../../../features/DeleteColumn/ui/DeleteColumnButton/DeleteColumnButton.tsx';
-import DeleteTaskButton from '../../../features/DeleteTasks/ui/DeleteTaskButton/DeleteTaskButton.tsx';
-import EditColumnButton from '../../../features/EditColumn/ui/EditColumnButton/EditColumnButton.tsx';
-import EditTaskButton from '../../../features/EditTask/ui/EditTaskButton/EditTaskButton.tsx';
-import useStore from '../../../shared/lib/store/store.ts';
+import { useEffect } from 'react';
+import { getAllColumns } from '../../../entities/Column/api/action';
+import ColumnCard from '../../../entities/Column/ui/ColumnCard/ColumnCard';
+import { getAllTasks } from '../../../entities/Task/api/action';
+import TaskCard from '../../../entities/Task/ui/TaskCard/TaskCard';
+import AddColumnButton from '../../../features/AddColumn/ui/AddColumnButton/AddColumnButton';
+import AddTaskButton from '../../../features/AddTask/ui/AddTaskButton/AddTaskButton';
+import DeleteColumnButton from '../../../features/DeleteColumn/ui/DeleteColumnButton/DeleteColumnButton';
+import DeleteTaskButton from '../../../features/DeleteTasks/ui/DeleteTaskButton/DeleteTaskButton';
+import EditColumnButton from '../../../features/EditColumn/ui/EditColumnButton/EditColumnButton';
+import EditTaskButton from '../../../features/EditTask/ui/EditTaskButton/EditTaskButton';
+import useStore from '../../../shared/lib/store/store';
 import './KanbanBoard.css';
 
 //перенести в другую папку
@@ -54,7 +54,9 @@ export default function KanbanBoard() {
 								title={column.title}
 								position={column.position}
 								color=/*{column.color}*/ {'rgba(235, 235, 255, 1)'} //переписать логику для цвета так как рандомные выдает почему-то только в формате hex
-								actions={[AddTaskButton, EditColumnButton, DeleteColumnButton]}
+								addTaskAction={AddTaskButton}
+								editColumnAction={EditColumnButton}
+								deleteColumnAction={DeleteColumnButton}
 							>
 								<ul className='kanban-column-tasks'>
 									{tasks

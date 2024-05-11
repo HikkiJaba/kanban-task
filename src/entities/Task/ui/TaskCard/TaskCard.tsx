@@ -1,7 +1,7 @@
 import React from 'react';
-import Status from '../../../../shared/UIkit/Status/Status.tsx';
-import Tag from '../../../../shared/UIkit/Tag/Tag.tsx';
-import { Task } from '../../../../types.tsx';
+import Status from '../../../../shared/UIkit/Status/Status';
+import Tag from '../../../../shared/UIkit/Tag/Tag';
+import { Task } from '../../../../types';
 import './TaskCard.css';
 
 type TaskCardProps = {

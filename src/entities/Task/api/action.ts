@@ -1,4 +1,4 @@
-import { baseURL } from '../../../app/constants/constants.ts';
+import { baseURL } from '../../../app/constants/constants';
 import { Task } from '../../../types';
 
 export const getAllTasks = async () => {
@@ -101,13 +101,6 @@ export const deleteAllTasksByColumn = async (columnId: string) => {
 		headers: { 'content-type': 'application/json' },
 	});
 	const tasks = (await tasksResponse.json()) as Task[];
-	// .then(response => {
-	// 	if (response.ok) {
-	// 		return response.json() as Promise<Task[]>;
-	// 	} else throw new Error('Error occurred!');
-	// })
-	// .catch(error => console.log(error));
-
 	const result = await Promise.all(
 		tasks.map(task => deleteTask(columnId, task.id))
 	);

@@ -19,12 +19,15 @@ export default function ColumnForm({
 	initialColumn,
 }: FormProps) {
 	const { isColumnFetching } = useStore();
-
+	const [error, setError] = useState<string>('');
 	const [title, setTitle] = useState<string>(initialColumn?.title || '');
 
 	const onSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		handleSubmit(title);
+		if (title.length > 0) {
+			setError('');
+			handleSubmit(title);
+		} else setError('This is a required field');
 	};
 
 	return (
@@ -35,6 +38,7 @@ export default function ColumnForm({
 				placeholder='Column title'
 				label='Name'
 				value={title}
+				error={error}
 				handleChange={event => setTitle(event.target.value)}
 			/>
 			<div className='column-form-buttons'>

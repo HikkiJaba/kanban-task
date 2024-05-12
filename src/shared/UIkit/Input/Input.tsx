@@ -5,6 +5,7 @@ type InputProps = {
 	label: string;
 	placeholder: string;
 	value: string;
+	error?: string;
 	handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -13,6 +14,7 @@ export default function Input({
 	label,
 	placeholder,
 	value,
+	error,
 	handleChange,
 }: InputProps) {
 	return (
@@ -24,7 +26,9 @@ export default function Input({
 				name={name}
 				value={value}
 				onChange={handleChange}
+				className={error ? 'error' : ''}
 			/>
+			<p className='form-input-error'>{error}</p>
 		</div>
 	);
 }

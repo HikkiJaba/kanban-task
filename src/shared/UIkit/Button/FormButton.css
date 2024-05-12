@@ -1,0 +1,25 @@
+.form-button {
+	padding: 8px 12px;
+
+	font-family: Inter, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.52px;
+	color: black;
+
+	border: none;
+	transition: all 0.2s;
+}
+
+.form-button:focus-visible {
+	outline: none;
+	font-weight: bolder;
+}
+
+.form-button:active {
+	transform: translateY(-2px);
+}
+
+.form-button:hover {
+	color: cadetblue;
+}

@@ -1,0 +1,41 @@
+.icon-button {
+	color: #6c6c6c;
+	border: none;
+	background-color: transparent;
+	transition: color 0.3s ease-out;
+}
+
+.icon-button:focus {
+	color: black;
+	outline: none;
+}
+
+.icon-button-create:hover {
+	color: cadetblue;
+}
+
+.icon-button-edit:hover {
+	color: goldenrod;
+}
+
+.icon-button-delete:hover {
+	color: red;
+}
+
+.icon-button-column,
+.icon-button-column svg {
+	width: 18px;
+	height: 18px;
+}
+
+.icon-button-task,
+.icon-button-task svg {
+	width: 16px;
+	height: 16px;
+}
+
+.icon-button-board,
+.icon-button-board svg {
+	width: 28px;
+	height: 28px;
+}

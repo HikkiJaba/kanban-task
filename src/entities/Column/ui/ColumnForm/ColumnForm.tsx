@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import FormButton from '../../../../shared/UIkit/Button/FormButton';
+import Input from '../../../../shared/UIkit/Input/Input';
+import useStore from '../../../../shared/lib/store/store';
 import { Column } from '../../../../types';
 import './ColumnForm.css';
 
@@ -15,30 +18,33 @@ export default function ColumnForm({
 	type,
 	initialColumn,
 }: FormProps) {
-	/*const [column, setColumn] = useState<Omit<Column, 'id' | 'color' | 'position'>>({
-		title: initialColumn?.title || '',
-	});*/
-
+	const { isColumnFetching } = useStore();
+	const [error, setError] = useState<string>('');
 	const [title, setTitle] = useState<string>(initialColumn?.title || '');
 
 	const onSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		handleSubmit(title);
+		if (title.length > 0) {
+			setError('');
+			handleSubmit(title);
+		} else setError('This is a required field');
 	};
 
 	return (
 		<form className='column-form' onSubmit={onSubmit}>
 			<h2>{`${type} column`}</h2>
-			<input
-				value={title}
-				onChange={event => setTitle(event.target.value)}
+			<Input
 				name='title'
-				type='text'
+				placeholder='Column title'
+				label='Name'
+				value={title}
+				error={error}
+				handleChange={event => setTitle(event.target.value)}
 			/>
-			<button type='submit'>Save</button>
-			<button type='button' onClick={handleCancel}>
-				Cancel
-			</button>
+			<div className='column-form-buttons'>
+				<FormButton type='submit' title='Save' disabled={isColumnFetching} />
+				<FormButton type='button' title='Cancel' onClick={handleCancel} />
+			</div>
 		</form>
 	);
 }

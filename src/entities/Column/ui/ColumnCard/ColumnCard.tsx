@@ -3,21 +3,31 @@ import { Column } from '../../../../types';
 import './ColumnCard.css';
 
 type ColumnCardProps = {
-	actions: React.FC<{ columnId: string }>[];
+	addTaskAction: React.FC<{ columnId: string }>;
+	editColumnAction: React.FC<{ columnId: string }>;
+	deleteColumnAction: React.FC<{ columnId: string }>;
 } & Column;
 
 export default function ColumnCard({
 	id,
 	title,
 	color,
-	actions,
+	addTaskAction,
+	editColumnAction,
+	deleteColumnAction,
 	children,
 }: PropsWithChildren<ColumnCardProps>) {
 	return (
 		<div className='column'>
-			<h2>{title}</h2>
-			<div className='column-tasks' style={{ backgroundColor: color }}>
-				{actions.map(action => action({ columnId: id }))}
+			<header className='column-header'>
+				<h2>{title}</h2>
+				<div className='column-buttons'>
+					{editColumnAction({ columnId: id })}
+					{deleteColumnAction({ columnId: id })}
+				</div>
+			</header>
+			<div className='column-tasks' style={{ backgroundColor: `${color}20` }}>
+				{addTaskAction({ columnId: id })}
 				{children}
 			</div>
 		</div>

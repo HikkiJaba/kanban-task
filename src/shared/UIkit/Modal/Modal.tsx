@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import './Modal.css';
 
 type ModalProps = {
@@ -8,16 +8,18 @@ type ModalProps = {
 };
 
 export default function Modal({ isOpen, close, children }: ModalProps) {
-	if (isOpen) {
-		return (
-			<div className='modal' onClick={close}>
-				<div
-					className='modal-content'
-					onClick={event => event.stopPropagation()}
-				>
-					{children}
+	return (
+		<div>
+			{isOpen && (
+				<div className='modal' onClick={close}>
+					<div
+						className='modal-content'
+						onClick={event => event.stopPropagation()}
+					>
+						{children}
+					</div>
 				</div>
-			</div>
-		);
-	}
+			)}
+		</div>
+	);
 }

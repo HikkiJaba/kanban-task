@@ -1,13 +1,14 @@
-import React from 'react';
-import { addTask } from '../../../../entities/Task/api/action.ts';
-import TaskForm from '../../../../entities/Task/ui/TaskForm/TaskForm.tsx';
-import Modal from '../../../../shared/UIkit/Modal/Modal.tsx';
-import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal.ts';
-import useStore from '../../../../shared/lib/store/store.ts';
+import { addTask } from '../../../../entities/Task/api/action';
+import TaskForm from '../../../../entities/Task/ui/TaskForm/TaskForm';
+import IconButton from '../../../../shared/UIkit/Button/IconButton';
+import Modal from '../../../../shared/UIkit/Modal/Modal';
+import { ReactComponent as AddIcon } from '../../../../shared/icons/add.svg';
+import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal';
+import useStore from '../../../../shared/lib/store/store';
 
 export default function AddTaskButton({ columnId }: { columnId: string }) {
 	const { isOpen, open, close } = useModal();
-	const { setTask } = useStore();
+	const { setTask, setTaskFetching, addNotification } = useStore();
 
 	const handleSubmit = (
 		newTitle: string,
@@ -22,18 +23,28 @@ export default function AddTaskButton({ columnId }: { columnId: string }) {
 				newTags
 			);
 			if (newTask) {
-				setTask(newTask);
-				close();
+				if (newTask instanceof Error)
+					addNotification(`Adding task error: ${newTask.message}`, 'error');
+				else {
+					setTask(newTask);
+					close();
+					addNotification('Task successfully added', 'success');
+				}
 			}
+			setTaskFetching(false);
 		};
+		setTaskFetching(true);
 		putTask();
 	};
 
 	return (
 		<div>
-			<button type='button' onClick={open}>
-				Add
-			</button>
+			<IconButton
+				onClick={open}
+				svg={<AddIcon />}
+				type='create'
+				position='task'
+			/>
 			<Modal isOpen={isOpen} close={close}>
 				<TaskForm
 					type='Create'

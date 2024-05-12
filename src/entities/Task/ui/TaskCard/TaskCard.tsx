@@ -1,25 +1,33 @@
 import React from 'react';
-import Status from '../../../../shared/UIkit/Status/Status.tsx';
-import Tag from '../../../../shared/UIkit/Tag/Tag.tsx';
-import { Task } from '../../../../types.tsx';
+import Status from '../../../../shared/UIkit/Status/Status';
+import Tag from '../../../../shared/UIkit/Tag/Tag';
+import { Task } from '../../../../types';
 import './TaskCard.css';
 
 type TaskCardProps = {
 	task: Task;
 	color: string;
 	title: string;
-	actions: React.FC<{ taskId: string }>[];
+	editTaskAction: React.FC<{ taskId: string }>;
+	deleteTaskAction: React.FC<{ taskId: string }>;
 };
 
 export default function TaskCard({
 	task,
 	color,
 	title,
-	actions,
+	editTaskAction,
+	deleteTaskAction,
 }: TaskCardProps) {
 	return (
 		<section className='card' draggable='true'>
-			<h3>{task.title}</h3>
+			<div className='card-title'>
+				<h3>{task.title}</h3>
+				<div className='card-buttons'>
+					{editTaskAction({ taskId: task.id })}
+					{deleteTaskAction({ taskId: task.id })}
+				</div>
+			</div>
 			<div className='card-description'>{task.description}</div>
 			<div className='card-status-div'>
 				<Status color={color} title={title} />
@@ -29,7 +37,6 @@ export default function TaskCard({
 					return <Tag key={index} tag={tag} />;
 				})}
 			</div>
-			{actions.map(action => action({ taskId: task.id }))}
 		</section>
 	);
 }

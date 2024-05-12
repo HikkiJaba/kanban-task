@@ -1,7 +1,8 @@
-import React from 'react';
-import { deleteColumn } from '../../../../entities/Column/api/action.ts';
-import { deleteAllTasksByColumn } from '../../../../entities/Task/api/action.ts';
-import useStore from '../../../../shared/lib/store/store.ts';
+import { deleteColumn } from '../../../../entities/Column/api/action';
+import { deleteAllTasksByColumn } from '../../../../entities/Task/api/action';
+import IconButton from '../../../../shared/UIkit/Button/IconButton';
+import { ReactComponent as DeleteIcon } from '../../../../shared/icons/delete.svg';
+import useStore from '../../../../shared/lib/store/store';
 
 export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 	const columnTasks = useStore(state =>
@@ -9,6 +10,7 @@ export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 	);
 	const deleteColumnStore = useStore().deleteColumn;
 	const deleteTaskStore = useStore().deleteTask;
+	const { isColumnFetching, setColumnFetching, addNotification } = useStore();
 
 	const handleClick = () => {
 		const removeColumn = async () => {
@@ -27,12 +29,19 @@ export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 					deleteColumnStore(columnId);
 				}
 			}
+			addNotification('Column successfully deleted', 'success');
+			setColumnFetching(false);
 		};
+		setColumnFetching(true);
 		removeColumn();
 	};
 	return (
-		<button type='button' onClick={handleClick}>
-			Delete
-		</button>
+		<IconButton
+			onClick={handleClick}
+			svg={<DeleteIcon />}
+			type='delete'
+			position='column'
+			disabled={isColumnFetching}
+		/>
 	);
 }

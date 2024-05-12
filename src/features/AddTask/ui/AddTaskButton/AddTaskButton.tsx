@@ -5,7 +5,6 @@ import Modal from '../../../../shared/UIkit/Modal/Modal';
 import { ReactComponent as AddIcon } from '../../../../shared/icons/add.svg';
 import { useModal } from '../../../../shared/lib/hooks/useModal/useMoodal';
 import useStore from '../../../../shared/lib/store/store';
-import './AddTaskButton.css';
 
 export default function AddTaskButton({ columnId }: { columnId: string }) {
 	const { isOpen, open, close } = useModal();

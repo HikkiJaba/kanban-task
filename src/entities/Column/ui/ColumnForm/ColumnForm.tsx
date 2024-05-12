@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import FormButton from '../../../../shared/UIkit/Button/FormButton';
+import Input from '../../../../shared/UIkit/Input/Input';
 import useStore from '../../../../shared/lib/store/store';
 import { Column } from '../../../../types';
 import './ColumnForm.css';
@@ -28,18 +30,17 @@ export default function ColumnForm({
 	return (
 		<form className='column-form' onSubmit={onSubmit}>
 			<h2>{`${type} column`}</h2>
-			<input
-				value={title}
-				onChange={event => setTitle(event.target.value)}
+			<Input
 				name='title'
-				type='text'
+				placeholder='Column title'
+				label='Name'
+				value={title}
+				handleChange={event => setTitle(event.target.value)}
 			/>
-			<button type='submit' disabled={isColumnFetching}>
-				Save
-			</button>
-			<button type='button' onClick={handleCancel}>
-				Cancel
-			</button>
+			<div className='column-form-buttons'>
+				<FormButton type='submit' title='Save' disabled={isColumnFetching} />
+				<FormButton type='button' title='Cancel' onClick={handleCancel} />
+			</div>
 		</form>
 	);
 }

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import FormButton from '../../../../shared/UIkit/Button/FormButton';
+import Input from '../../../../shared/UIkit/Input/Input';
+import TextArea from '../../../../shared/UIkit/TextArea/TextArea';
 import useStore from '../../../../shared/lib/store/store';
 import { Task } from '../../../../types';
 import './TaskForm.css';
@@ -28,7 +31,9 @@ export default function TaskForm({
 
 	const { isTaskFetching } = useStore();
 
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
 		if (event.target.name === 'tags') {
 			setTask({
 				...task,
@@ -50,30 +55,31 @@ export default function TaskForm({
 	return (
 		<form className='task-form' onSubmit={onSubmit}>
 			<h2>{`${type} task`}</h2>
-			<input
-				value={task.title}
-				onChange={handleChange}
+			<Input
 				name='title'
-				type='text'
+				placeholder='Task title'
+				label='Name'
+				value={task.title}
+				handleChange={handleChange}
 			/>
-			<input
-				value={task.description}
-				onChange={handleChange}
+			<TextArea
 				name='description'
-				type='text'
+				placeholder='Task description'
+				label='Description'
+				value={task.description}
+				handleChange={handleChange}
 			/>
-			<input
-				value={task.tags.join(',')}
-				onChange={handleChange}
+			<Input
 				name='tags'
-				type='text'
+				placeholder='Task tags (e.g. "tag1, tag2, ...")'
+				label='Tags'
+				value={task.tags.join(',')}
+				handleChange={handleChange}
 			/>
-			<button type='submit' disabled={isTaskFetching}>
-				Save
-			</button>
-			<button type='button' onClick={handleCancel}>
-				Cancel
-			</button>
+			<div className='task-form-buttons'>
+				<FormButton type='submit' title='Save' disabled={isTaskFetching} />
+				<FormButton type='button' title='Cancel' onClick={handleCancel} />
+			</div>
 		</form>
 	);
 }

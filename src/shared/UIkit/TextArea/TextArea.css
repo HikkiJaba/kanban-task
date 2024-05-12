@@ -1,0 +1,45 @@
+.form-textarea {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.form-textarea textarea {
+	border: none;
+	padding: 13px;
+	color: black;
+	font-family: Inter, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.52px;
+	resize: none;
+	height: 124px;
+}
+
+.form-textarea textarea:focus-visible {
+	outline: none;
+}
+
+.form-textarea textarea::placeholder {
+	color: black;
+	font-family: Inter, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.52px;
+}
+
+.form-textarea label {
+	color: #6c6c6c;
+	font-family: Inter, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 14.52px;
+}
+
+textarea::-webkit-scrollbar {
+	display: none;
+}
+textarea {
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
+}

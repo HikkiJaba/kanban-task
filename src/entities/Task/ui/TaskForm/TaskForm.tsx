@@ -28,6 +28,7 @@ export default function TaskForm({
 		description: initialTask?.description || '',
 		tags: initialTask?.tags || [],
 	});
+	const [error, setError] = useState<string>('');
 
 	const { isTaskFetching } = useStore();
 
@@ -49,7 +50,10 @@ export default function TaskForm({
 
 	const onSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		handleSubmit(task.title, task.description, task.tags);
+		if (task.title.length > 0) {
+			setError('');
+			handleSubmit(task.title, task.description, task.tags);
+		} else setError('This is a required field');
 	};
 
 	return (
@@ -60,6 +64,7 @@ export default function TaskForm({
 				placeholder='Task title'
 				label='Name'
 				value={task.title}
+				error={error}
 				handleChange={handleChange}
 			/>
 			<TextArea

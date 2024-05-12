@@ -9,12 +9,12 @@ export const getAllTasks = async () => {
 		.then(response => {
 			if (response.ok) {
 				return response.json() as Promise<Task[]>;
-			} else throw new Error('Error occurred!');
+			} else throw new Error(response.status + ' ' + response.statusText);
 		})
 		.then(tasks => {
 			return tasks;
 		})
-		.catch(error => console.log(error));
+		.catch(error => error as Error);
 	return allTasks;
 };
 
@@ -36,13 +36,12 @@ export const addTask = async (
 		.then(response => {
 			if (response.ok) {
 				return response.json() as Promise<Task>;
-			} else throw new Error('Error occurred!');
+			} else throw new Error(response.status + ' ' + response.statusText);
 		})
 		.then(task => {
 			return task;
 		})
-		.catch(error => console.log(error));
-
+		.catch(error => error as Error);
 	return task;
 };
 
@@ -66,13 +65,12 @@ export const editTask = async (
 		.then(response => {
 			if (response.ok) {
 				return response.json() as Promise<Task>;
-			} else throw new Error('Error occurred!');
+			} else throw new Error(response.status + ' ' + response.statusText);
 		})
 		.then(task => {
 			return task;
 		})
-		.catch(error => console.log(error));
-
+		.catch(error => error as Error);
 	return task;
 };
 
@@ -86,12 +84,12 @@ export const deleteTask = async (columnId: string, taskId: string) => {
 		.then(response => {
 			if (response.ok) {
 				return response.json() as Promise<Task>;
-			} else throw new Error('Error occurred!');
+			} else throw new Error(response.status + ' ' + response.statusText);
 		})
 		.then(task => {
 			return task;
 		})
-		.catch(error => console.log(error));
+		.catch(error => error as Error);
 	return deletedTask;
 };
 

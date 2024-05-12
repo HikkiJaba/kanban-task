@@ -13,12 +13,8 @@ export type Column = {
 	position: number;
 };
 
-export type ColumnWithTasks = {
-	tasks: Task[];
-	TaskComponent: React.FC<{
-		task: Task;
-		color: string;
-		title: string;
-		action: React.FC;
-	}>;
-} & Column;
+export type NotificationType = {
+	id: string;
+	message: string;
+	type: 'success' | 'error' | 'info';
+};

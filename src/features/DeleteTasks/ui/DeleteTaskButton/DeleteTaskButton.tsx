@@ -6,14 +6,22 @@ import useStore from '../../../../shared/lib/store/store';
 export default function DeleteTaskButton({ taskId }: { taskId: string }) {
 	const task = useStore(state => state.tasks.find(item => item.id === taskId));
 	const deleteTaskStore = useStore().deleteTask;
-	const { isTaskFetching, setTaskFetching } = useStore();
+	const { isTaskFetching, setTaskFetching, addNotification } = useStore();
 
 	const handleClick = () => {
 		const removeTask = async () => {
 			if (task) {
 				const deletedTask = await deleteTask(task.columnId, taskId);
 				if (deletedTask) {
-					deleteTaskStore(taskId);
+					if (deletedTask instanceof Error)
+						addNotification(
+							`Deleting task error: ${deletedTask.message}`,
+							'error'
+						);
+					else {
+						deleteTaskStore(taskId);
+						addNotification('Task successfully deleted', 'success');
+					}
 				}
 			}
 			setTaskFetching(false);

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Column, Task } from '../../../types';
+import { Column, NotificationType, Task } from '../../../types';
 
 type TaskState = {
 	tasks: Task[];
@@ -21,9 +21,19 @@ type ColumnState = {
 	deleteColumn: (columnId: string) => void;
 };
 
-const useStore = create<TaskState & ColumnState>()(set => ({
+type NotificationState = {
+	notifications: NotificationType[];
+	addNotification: (
+		message: string,
+		type: 'success' | 'error' | 'info'
+	) => void;
+	deleteNotification: (id: string) => void;
+};
+
+const useStore = create<TaskState & ColumnState & NotificationState>()(set => ({
 	tasks: [],
 	columns: [],
+	notifications: [],
 	isTaskFetching: false,
 	isColumnFetching: false,
 
@@ -127,6 +137,29 @@ const useStore = create<TaskState & ColumnState>()(set => ({
 			return {
 				...state,
 				columns: newColumns,
+			};
+		});
+	},
+
+	addNotification: (message, type) => {
+		set(state => {
+			const newNotifications = [...state.notifications];
+			newNotifications.push({ message, type, id: new Date().toISOString() });
+			return {
+				...state,
+				notifications: newNotifications,
+			};
+		});
+	},
+
+	deleteNotification: id => {
+		set(state => {
+			const index = state.notifications.findIndex(item => item.id === id);
+			const newNotifications = [...state.notifications];
+			newNotifications.splice(index, 1);
+			return {
+				...state,
+				notifications: newNotifications,
 			};
 		});
 	},

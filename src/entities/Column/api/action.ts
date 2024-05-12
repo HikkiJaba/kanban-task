@@ -9,12 +9,12 @@ export const getAllColumns = async () => {
 		.then(response => {
 			if (response.ok) {
 				return response.json() as Promise<Column[]>;
-			} else throw new Error('Error occurred!');
+			} else throw new Error(response.status + ' ' + response.statusText);
 		})
 		.then(column => {
 			return column;
 		})
-		.catch(error => console.log(error));
+		.catch(error => error as Error);
 	return allColumns;
 };
 
@@ -30,12 +30,12 @@ export const addColumn = async (newTitle: string, newPosition: number) => {
 		.then(response => {
 			if (response.ok) {
 				return response.json() as Promise<Column>;
-			} else throw new Error('Error occurred!');
+			} else throw new Error(response.status + ' ' + response.statusText);
 		})
 		.then(column => {
 			return column;
 		})
-		.catch(error => console.log(error));
+		.catch(error => error as Error);
 
 	return column;
 };
@@ -56,13 +56,12 @@ export const editColumn = async (
 		.then(response => {
 			if (response.ok) {
 				return response.json() as Promise<Column>;
-			} else throw new Error('Error occurred!');
+			} else throw new Error(response.status + ' ' + response.statusText);
 		})
 		.then(column => {
 			return column;
 		})
-		.catch(error => console.log(error));
-
+		.catch(error => error as Error);
 	return column;
 };
 
@@ -73,11 +72,11 @@ export const deleteColumn = async (columnId: string) => {
 		.then(response => {
 			if (response.ok) {
 				return response.json() as Promise<Column>;
-			} else throw new Error('Error occurred!');
+			} else throw new Error(response.status + ' ' + response.statusText);
 		})
 		.then(column => {
 			return column;
 		})
-		.catch(error => console.log(error));
+		.catch(error => error as Error);
 	return deletedColumn;
 };

@@ -11,7 +11,7 @@ export default function EditTaskButton({ taskId }: { taskId: string }) {
 
 	const task = useStore(state => state.tasks.find(item => item.id === taskId));
 	const edit = useStore().editTask;
-	const { setTaskFetching } = useStore();
+	const { setTaskFetching, addNotification } = useStore();
 
 	const handleSubmit = (
 		newTitle: string,
@@ -28,8 +28,13 @@ export default function EditTaskButton({ taskId }: { taskId: string }) {
 					task.columnId
 				);
 				if (newTask) {
-					edit(newTask);
-					close();
+					if (newTask instanceof Error)
+						addNotification(`Editing task error: ${newTask.message}`, 'error');
+					else {
+						edit(newTask);
+						close();
+						addNotification('Task successfully edited', 'success');
+					}
 				}
 				setTaskFetching(false);
 			}

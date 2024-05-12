@@ -10,7 +10,7 @@ export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 	);
 	const deleteColumnStore = useStore().deleteColumn;
 	const deleteTaskStore = useStore().deleteTask;
-	const { isColumnFetching, setColumnFetching } = useStore();
+	const { isColumnFetching, setColumnFetching, addNotification } = useStore();
 
 	const handleClick = () => {
 		const removeColumn = async () => {
@@ -29,6 +29,7 @@ export default function DeleteColumnButton({ columnId }: { columnId: string }) {
 					deleteColumnStore(columnId);
 				}
 			}
+			addNotification('Column successfully deleted', 'success');
 			setColumnFetching(false);
 		};
 		setColumnFetching(true);

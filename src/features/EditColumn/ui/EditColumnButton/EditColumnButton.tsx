@@ -8,7 +8,7 @@ import useStore from '../../../../shared/lib/store/store';
 
 export default function EditColumnButton({ columnId }: { columnId: string }) {
 	const { isOpen, open, close } = useModal();
-	const { setColumnFetching } = useStore();
+	const { setColumnFetching, addNotification } = useStore();
 
 	const column = useStore(state =>
 		state.columns.find(item => item.id === columnId)
@@ -20,8 +20,16 @@ export default function EditColumnButton({ columnId }: { columnId: string }) {
 			if (column) {
 				const newColumn = await editColumn(columnId, newTitle, column.position);
 				if (newColumn) {
-					edit(newColumn);
-					close();
+					if (newColumn instanceof Error)
+						addNotification(
+							`Editing column error: ${newColumn.message}`,
+							'error'
+						);
+					else {
+						edit(newColumn);
+						close();
+						addNotification('Column successfully edited', 'success');
+					}
 				}
 			}
 			setColumnFetching(false);

@@ -8,7 +8,7 @@ import useStore from '../../../../shared/lib/store/store';
 
 export default function AddTaskButton({ columnId }: { columnId: string }) {
 	const { isOpen, open, close } = useModal();
-	const { setTask, setTaskFetching } = useStore();
+	const { setTask, setTaskFetching, addNotification } = useStore();
 
 	const handleSubmit = (
 		newTitle: string,
@@ -23,8 +23,13 @@ export default function AddTaskButton({ columnId }: { columnId: string }) {
 				newTags
 			);
 			if (newTask) {
-				setTask(newTask);
-				close();
+				if (newTask instanceof Error)
+					addNotification(`Adding task error: ${newTask.message}`, 'error');
+				else {
+					setTask(newTask);
+					close();
+					addNotification('Task successfully added', 'success');
+				}
 			}
 			setTaskFetching(false);
 		};

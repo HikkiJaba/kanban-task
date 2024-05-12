@@ -8,7 +8,7 @@ import useStore from '../../../../shared/lib/store/store';
 
 export default function AddColumnButton() {
 	const { isOpen, open, close } = useModal();
-	const { columns, setColumn, setColumnFetching } = useStore();
+	const { columns, setColumn, setColumnFetching, addNotification } = useStore();
 
 	const newPosition = columns.length + 1;
 
@@ -16,8 +16,13 @@ export default function AddColumnButton() {
 		const putColumn = async () => {
 			const newColumn = await addColumn(newTitle, newPosition);
 			if (newColumn) {
-				setColumn(newColumn);
-				close();
+				if (newColumn instanceof Error)
+					addNotification(`Adding column error: ${newColumn.message}`, 'error');
+				else {
+					setColumn(newColumn);
+					close();
+					addNotification('Column successfully added', 'success');
+				}
 			}
 			setColumnFetching(false);
 		};

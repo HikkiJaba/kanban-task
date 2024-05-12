@@ -1,0 +1,8 @@
+.notification-board {
+	position: fixed;
+	right: 5px;
+	bottom: 5px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}

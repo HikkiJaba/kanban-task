@@ -1,6 +1,7 @@
 .kanban-board {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 25px;
 }
 
 .kanban-columns-list {
@@ -22,4 +23,45 @@
 
 li {
 	list-style: none;
+}
+
+@media (max-width: 1280px) {
+	.kanban-columns-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		justify-content: center;
+	}	
+}
+
+@media (max-width: 1024px) {
+	.kanban-columns-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		justify-content: center;
+	}	
+}
+
+	
+@media (max-width: 768px) {
+	.kanban-columns-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		justify-content: center;
+		text-align: left;
+	}
+
+	.kanban-board {
+		display: flex;
+		justify-content: center;
+		flex-direction: column-reverse;
+		text-align: center;
+	}
+
+}
+
+@media (max-width: 375px) {
+
 }

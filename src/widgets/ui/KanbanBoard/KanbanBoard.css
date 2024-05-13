@@ -33,7 +33,7 @@ li {
 }
 
 .theme-button {
-	background-color: #4CAF50;
+	background-color: rgb(26, 26, 26);
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -44,10 +44,20 @@ li {
 	margin: 4px 2px;
 	cursor: pointer;
 	border-radius: 10px;
+	transition: 0.3s;
   }
   
   .theme-button:hover {
-	background-color: #45a049;
+	background-color: rgb(49, 49, 49);
+  }
+
+  .dark .theme-button {
+	background-color: white;
+	color: rgb(26, 26, 26);
+  }
+
+  .dark .theme-button:hover {
+	background-color: rgb(206, 206, 206);
   }
 
 @media (max-width: 1280px) {

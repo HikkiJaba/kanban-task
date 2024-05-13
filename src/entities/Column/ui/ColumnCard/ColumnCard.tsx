@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useState } from 'react';
 import { Column } from '../../../../types';
 import './ColumnCard.css';
 
@@ -7,50 +7,61 @@ type ColumnCardProps = {
     editColumnAction: React.FC<{ columnId: string }>;
     deleteColumnAction: React.FC<{ columnId: string }>;
     onDrop: (event: React.DragEvent<HTMLDivElement>, columnId: string) => void;
-	onDragLeave: (event: React.DragEvent<HTMLDivElement>) => void;
+    onDragLeave: (event: React.DragEvent<HTMLDivElement>) => void;
 } & Column;
 
-
 export default function ColumnCard({
-	id,
-	title,
-	color,
-	addTaskAction,
-	editColumnAction,
-	deleteColumnAction,
-	children,
-	onDrop,
-	onDragLeave,
+    id,
+    title,
+    color,
+    addTaskAction,
+    editColumnAction,
+    deleteColumnAction,
+    children,
+    onDrop,
 }: PropsWithChildren<ColumnCardProps>) {
-	const dragOver = (event: React.DragEvent<HTMLDivElement>) => {
-		event.preventDefault();
-		event.currentTarget.classList.add("column-tasks-drag");
-	}
+    const [isDraggingOver, setIsDraggingOver] = useState(false);
 
-	const dragEnd = (event: React.DragEvent<HTMLDivElement>) => {
-		event.currentTarget.classList.remove("column-tasks-drag");
-	}
+    const dragOver = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        setIsDraggingOver(true);
+    };
 
-	return (
-		<div className='column'>
-			<header className='column-header'>
-				<h2>{title}</h2>
-				<div className='column-buttons'>
-					{editColumnAction({ columnId: id })}
-					{deleteColumnAction({ columnId: id })}
-				</div>
-			</header>
-			<div 
-				onDragOver={dragOver} 
-				onDragEnd={dragEnd} 
-				onDragLeave={onDragLeave} 
-				onDrop={(event) => onDrop(event, id)} 
-				className='column-tasks' 
-				style={{ backgroundColor: `${color}20` }}
-			>
-				{addTaskAction({ columnId: id })}
-				{children}
-			</div>
-		</div>
-	);
+    const dragLeave = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        setIsDraggingOver(false);
+    };
+
+    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        setIsDraggingOver(false);
+        const taskId = event.dataTransfer.getData('text/plain');
+        if (taskId) {
+            onDrop(event, id);
+        }
+    };
+
+    const className = isDraggingOver ? 'column-tasks column-tasks-drag' : 'column-tasks';
+
+    return (
+        <div className='column'>
+            <header className='column-header'>
+                <h2>{title}</h2>
+                <div className='column-buttons'>
+                    {editColumnAction({ columnId: id })}
+                    {deleteColumnAction({ columnId: id })}
+                </div>
+            </header>
+            <div
+                onDragOver={dragOver}
+                onDragLeave={dragLeave}
+                onDrop={handleDrop}
+                className={className}
+                style={{ backgroundColor: `${color}20` }}
+            >
+                {addTaskAction({ columnId: id })}
+                {children}
+            </div>
+        </div>
+    );
 }

@@ -52,15 +52,17 @@ export default function ColumnCard({
                     {deleteColumnAction({ columnId: id })}
                 </div>
             </header>
-            <div
-                onDragOver={dragOver}
-                onDragLeave={dragLeave}
-                onDrop={handleDrop}
-                className={className}
-                style={{ backgroundColor: `${color}20` }}
-            >
-                {addTaskAction({ columnId: id })}
-                {children}
+            <div className='div-theme'>
+                <div
+                    onDragOver={dragOver}
+                    onDragLeave={dragLeave}
+                    onDrop={handleDrop}
+                    className={className}
+                    style={{ backgroundColor: `${color}20` }}
+                >
+                    {addTaskAction({ columnId: id })}
+                    {children}
+                </div>
             </div>
         </div>
     );

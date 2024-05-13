@@ -1,7 +1,8 @@
 .kanban-board {
+	padding-top: 50px;
 	display: flex;
 	justify-content: center;
-	margin-bottom: 25px;
+	padding-bottom: 150px;
 }
 
 .kanban-columns-list {

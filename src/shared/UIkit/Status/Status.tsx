@@ -18,15 +18,17 @@ export default function Status({
 	const darkerColor = `rgba(${r}, ${g}, ${b}, ${a - 0.5})`;*/
 
 	return (
-		<div
-			className='status-div'
-			style={{ '--status-color': `${color}20` } as React.CSSProperties}
-		>
-			<span>{title}</span>
-			<span
-				className='darker-color'
-				style={{ '--circle-color': color } as React.CSSProperties}
-			></span>
+		<div className='status-theme'>
+			<div
+				className='status-div'
+				style={{ '--status-color': `${color}20` } as React.CSSProperties}
+			>
+				<span>{title}</span>
+				<span
+					className='darker-color'
+					style={{ '--circle-color': color } as React.CSSProperties}
+				></span>
+			</div>
 		</div>
 	);
 }

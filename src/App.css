@@ -6,3 +6,37 @@ li {
 	padding: 0;
 	margin: 0;
 }
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.App {
+    margin: 0;
+    padding: 0;
+}
+
+.light {
+	transition: 0.3s;
+}
+
+.dark {
+	height: 100%;
+	transition: 0.3s;
+	background-color: rgb(26, 26, 26);
+	color: white;
+}
+
+.dark .div-theme {
+	background-color: rgb(218, 218, 218);
+	border-radius: 4px;
+}
+
+.dark .card {
+	background-color: rgb(26, 26, 26);
+}
+
+.dark .status-theme {
+	background-color: rgb(218, 218, 218);
+}

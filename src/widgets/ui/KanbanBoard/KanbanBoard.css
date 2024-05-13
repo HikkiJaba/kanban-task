@@ -5,6 +5,10 @@
 	padding-bottom: 150px;
 }
 
+.kanban-add-button button {
+	margin-bottom: 10px;
+}
+
 .kanban-columns-list {
 	display: flex;
 	gap: 24px;
@@ -20,11 +24,31 @@
 
 .kanban-add-button {
 	margin-left: 40px;
+	margin-right: 20px;
+	text-align: center;
 }
 
 li {
 	list-style: none;
 }
+
+.theme-button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 10px;
+  }
+  
+  .theme-button:hover {
+	background-color: #45a049;
+  }
 
 @media (max-width: 1280px) {
 	.kanban-columns-list {
@@ -56,10 +80,21 @@ li {
 
 	.kanban-board {
 		display: flex;
-		justify-content: center;
+		align-items: center !important;
+		justify-content: center !important;
 		flex-direction: column-reverse;
-		text-align: center;
+		text-align: center !important;
 	}
+
+	.kanban-add-button {
+		padding:  0;
+		margin: 0;
+		margin-bottom: 25px;
+		text-align: center;
+		align-items: center;
+	}
+
+
 
 }
 

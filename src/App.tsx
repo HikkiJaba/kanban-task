@@ -12,7 +12,7 @@ function App() {
   	};
 	return (
 		<div className={`App ${theme}`}>
-      		<KanbanBoard theme={theme} onToggleTheme={handleToggleTheme} />
+      		<KanbanBoard theme={theme} onToggleTheme={handleToggleTheme}/>
 			<NotificationBoard />
     	</div>
 	);

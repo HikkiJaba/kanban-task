@@ -3,8 +3,9 @@
 	border: none;
 	background-color: transparent;
 	transition: color 0.3s ease-out;
+	margin: 0;
+	padding: 0;
 }
-
 
 .icon-button:focus {
 	color: black;

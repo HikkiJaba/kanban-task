@@ -25,7 +25,9 @@ export default function TaskCard({
 		<section
 			className='card'
 			draggable='true'
-			onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, task.id)}
+			onDragStart={(event: React.DragEvent<HTMLDivElement>) =>
+				onDragStart(event, task.id)
+			}
 		>
 			<div className='card-title'>
 				<h3>{task.title}</h3>

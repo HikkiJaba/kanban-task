@@ -8,15 +8,6 @@ export default function Status({
 	color: string;
 	title: string;
 }) {
-	/*const rgbaRegex = /rgba\((\d+), (\d+), (\d+), ([\d.]+)\)/;
-	const matches = color.match(rgbaRegex);
-	const r = parseInt(matches![1]);
-	const g = parseInt(matches![2]);
-	const b = parseInt(matches![3]);
-	const a = parseFloat(matches![4]);
-
-	const darkerColor = `rgba(${r}, ${g}, ${b}, ${a - 0.5})`;*/
-
 	return (
 		<div className='status-theme'>
 			<div

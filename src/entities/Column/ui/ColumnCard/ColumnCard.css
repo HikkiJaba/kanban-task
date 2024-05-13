@@ -40,3 +40,7 @@
 .column:hover .column-buttons {
 	opacity: 100%;
 }
+
+.column-tasks-drag {
+	border: 3px dotted black;
+}

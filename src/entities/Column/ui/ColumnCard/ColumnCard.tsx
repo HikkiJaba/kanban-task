@@ -3,10 +3,13 @@ import { Column } from '../../../../types';
 import './ColumnCard.css';
 
 type ColumnCardProps = {
-	addTaskAction: React.FC<{ columnId: string }>;
-	editColumnAction: React.FC<{ columnId: string }>;
-	deleteColumnAction: React.FC<{ columnId: string }>;
+    addTaskAction: React.FC<{ columnId: string }>;
+    editColumnAction: React.FC<{ columnId: string }>;
+    deleteColumnAction: React.FC<{ columnId: string }>;
+    onDrop: (event: React.DragEvent<HTMLDivElement>, columnId: string) => void;
+	onDragLeave: (event: React.DragEvent<HTMLDivElement>) => void;
 } & Column;
+
 
 export default function ColumnCard({
 	id,
@@ -16,7 +19,18 @@ export default function ColumnCard({
 	editColumnAction,
 	deleteColumnAction,
 	children,
+	onDrop,
+	onDragLeave,
 }: PropsWithChildren<ColumnCardProps>) {
+	const dragOver = (event: React.DragEvent<HTMLDivElement>) => {
+		event.preventDefault();
+		event.currentTarget.classList.add("column-tasks-drag");
+	}
+
+	const dragEnd = (event: React.DragEvent<HTMLDivElement>) => {
+		event.currentTarget.classList.remove("column-tasks-drag");
+	}
+
 	return (
 		<div className='column'>
 			<header className='column-header'>
@@ -26,7 +40,14 @@ export default function ColumnCard({
 					{deleteColumnAction({ columnId: id })}
 				</div>
 			</header>
-			<div className='column-tasks' style={{ backgroundColor: `${color}20` }}>
+			<div 
+				onDragOver={dragOver} 
+				onDragEnd={dragEnd} 
+				onDragLeave={onDragLeave} 
+				onDrop={(event) => onDrop(event, id)} 
+				className='column-tasks' 
+				style={{ backgroundColor: `${color}20` }}
+			>
 				{addTaskAction({ columnId: id })}
 				{children}
 			</div>

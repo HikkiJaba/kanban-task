@@ -10,6 +10,7 @@ type TaskCardProps = {
 	title: string;
 	editTaskAction: React.FC<{ taskId: string }>;
 	deleteTaskAction: React.FC<{ taskId: string }>;
+	onDragStart: (event: React.DragEvent<HTMLDivElement>, taskId: string) => void;
 };
 
 export default function TaskCard({
@@ -18,9 +19,14 @@ export default function TaskCard({
 	title,
 	editTaskAction,
 	deleteTaskAction,
+	onDragStart,
 }: TaskCardProps) {
 	return (
-		<section className='card' draggable='true'>
+		<section
+			className='card'
+			draggable='true'
+			onDragStart={(event: React.DragEvent<HTMLDivElement>) => onDragStart(event, task.id)}
+		>
 			<div className='card-title'>
 				<h3>{task.title}</h3>
 				<div className='card-buttons'>

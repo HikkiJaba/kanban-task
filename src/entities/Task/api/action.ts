@@ -104,3 +104,22 @@ export const deleteAllTasksByColumn = async (columnId: string) => {
 	);
 	return result;
 };
+
+export const editTaskColumnId = async (
+    taskId: string,
+    newColumnId: string
+) => {
+    const response = await fetch(`${baseURL}/tasks/${taskId}`, {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+            columnId: newColumnId
+        }),
+    });
+
+    if (response.ok) {
+        return await response.json() as Task;
+    } else {
+        throw new Error(response.status + ' ' + response.statusText);
+    }
+};

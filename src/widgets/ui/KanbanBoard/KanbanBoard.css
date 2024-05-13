@@ -7,6 +7,7 @@
 
 .kanban-add-button button {
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 .kanban-columns-list {
@@ -25,7 +26,13 @@
 .kanban-add-button {
 	margin-left: 40px;
 	margin-right: 20px;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.add-column-button {
+	margin: auto 0;
 }
 
 li {

@@ -109,7 +109,9 @@ export default function KanbanBoard({
 				<button onClick={onToggleTheme} className='theme-button'>
 					Тема на сайте
 				</button>
-				<AddColumnButton />
+				<div className='add-column-button'>
+					<AddColumnButton />
+				</div>
 			</div>
 		</div>
 	);
